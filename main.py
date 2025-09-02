@@ -18,16 +18,25 @@ def exibir_jogo():
     print()
 
 def selecionar_area():
-    jogador_atual = 'X' if turno % 2 == 0 else 'O'
-    linha = int(input('Escolha uma linha: '))
-    coluna = int(input('Escolha uma coluna: '))
-    quadro[linha][coluna] = jogador_atual
+    while True:
+
+        exibir_jogo()
+        jogador_atual = 'X' if turno % 2 == 0 else 'O'
+        print(f'Jogador atual: {jogador_atual}')
+        linha = int(input('Escolha uma linha: '))
+        coluna = int(input('Escolha uma coluna: '))
+
+        if quadro[linha][coluna] == 'X' or quadro[linha][coluna] == 'O':
+            os.system('cls')
+            print('Este lugar já está ocupado')
+        else:
+            quadro[linha][coluna] = jogador_atual
+            break
     return jogador_atual
 
 turno = 0
 for i in range(9):
-
-    exibir_jogo()
+    
     jogador_atual = selecionar_area()
 
     def vitoria():
